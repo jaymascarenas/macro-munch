@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import auth from '../utils/auth';
+import auth from "../utils/auth";
 
 const Navbar = () => {
   const currentPage = useLocation().pathname;
@@ -18,16 +18,18 @@ const Navbar = () => {
   }, [loginCheck]);
 
   return (
-    
-    <div className='display-flex justify-space-between align-center py-2 px-5 mint-green'>
+    <div className="display-flex justify-space-between align-center py-2 px-5 mint-green">
       <h1>Macro-Munch</h1>
       <div>
         {!loginCheck ? (
           <>
-          <button className='btn' type='button'>
-            <Link to='/login'>Login</Link>
-          </button>
-          <a className="nav-item">
+            <button className="btn" type="button" style={{marginRight: '10px'}}>
+              <Link to="/signup">Signup</Link>
+            </button>
+            <button className="btn" type="button">
+              <Link to="/login">Login</Link>
+            </button>
+            <a className="nav-item">
                 <Link
                   id="nav-item"
                   to="/recipeFinder"
@@ -38,8 +40,8 @@ const Navbar = () => {
           </>
         ) : (
           <button
-            className='btn'
-            type='button'
+            className="btn"
+            type="button"
             onClick={() => {
               auth.logout();
             }}
