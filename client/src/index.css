@@ -1706,3 +1706,41 @@ form [type='radio'] {
     align-content: center;
   }
 }
+.recipeName{
+  display:flex;
+  justify-content: center;
+  margin: 5% 30% 0 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.cardContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+#recipePic{
+  height: 500px;
+  width: 45%;
+  border-radius: 15px;
+  border:#000000 solid 2px;
+}
+.listContainer{
+  margin-left: 5%;
+}
+.instructionSection{
+  margin-bottom: 10%;
+}
+li{
+  font-size: 20px;
+  margin-right: 30%;
+}
+#instructions{
+  font-size: 25px;
+}
+#ingredientsList{
+  height: 480px;
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
