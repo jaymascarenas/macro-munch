@@ -4,6 +4,7 @@ import type { UserData } from "../interfaces/UserData";
 import ErrorPage from "./ErrorPage";
 import UserList from '../components/Users';
 import auth from '../utils/auth';
+import carImg from "../utils/IMG/CarImg.webp";
 
 const Home = () => {
 
@@ -47,8 +48,9 @@ const Home = () => {
                 !loginCheck ? (
                     <div className='login-notice'>
                         <h1>
-                            Login to view all your friends!
+                            Login to View and Maintain your vehicle!
                         </h1>
+                        <img id="login-carImg" src={carImg}></img>
                     </div>
                 ) : (
                     <UserList users={users} />
