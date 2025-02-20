@@ -74,8 +74,13 @@ const savedRecipes: string[] = []
     <div>
       <div className="headContainer">
       <h1> Recipe Finder</h1>
+<<<<<<< HEAD
       <p>find a recipe and and save it to your dashboard!</p>
       <form className="recipeForm" onSubmit={handleFormSubmit}>
+=======
+      <p>Find a recipe and save it to your dashboard!</p>
+      <form onSubmit={handleFormSubmit}>
+>>>>>>> b7943d92204ce424c81f36d3fe037e370f8a8c28
         <input
           type="text"
           placeholder="Search for a recipe"

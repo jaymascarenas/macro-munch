@@ -2,9 +2,9 @@ import { useState, useEffect, useLayoutEffect } from "react";
 import { retrieveUsers } from "../api/userAPI";
 import type { UserData } from "../interfaces/UserData";
 import ErrorPage from "./ErrorPage";
-import UserList from '../components/Users';
 import auth from '../utils/auth';
 import carImg from "../utils/IMG/CarImg.webp";
+import RecipeFinder from "./recipeFinder";
 
 const Home = () => {
 
@@ -48,12 +48,13 @@ const Home = () => {
                 !loginCheck ? (
                     <div className='login-notice'>
                         <h1>
-                            Login to View and Maintain your vehicle!
+                            Login to search yummy recipes!
                         </h1>
                         <img id="login-carImg" src={carImg}></img>
                     </div>
                 ) : (
-                    <UserList users={users} />
+                    console.log(users),
+                    <RecipeFinder/>
                 )}
         </>
     );
