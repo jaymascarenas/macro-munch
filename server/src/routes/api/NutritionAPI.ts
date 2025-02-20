@@ -1,14 +1,7 @@
 import express from 'express';
 import type { Request, Response } from 'express';
-//   if (!response.ok) {
-//     throw new Error("Network response was not ok");
-//   }
 
-  
-// } catch (err) {
-//   console.log("Unable to retrieve data", err);
-//   return Promise.reject("Could not fetch nutritional facts");
-// }
+//make fetch to nutrition API
 const router = express.Router();
 // GET /users/:id - Get a user by id
 router.get('/:food', async (req: Request, res: Response) => {
