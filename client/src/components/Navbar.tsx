@@ -18,28 +18,30 @@ const Navbar = () => {
   }, [loginCheck]);
 
   return (
-    
-    <div className='display-flex justify-space-between align-center py-2 px-5 mint-green'>
+    <div className="display-flex justify-space-between align-center py-2 px-5 mint-green">
       <h1>Macro-Munch</h1>
       <div>
         {!loginCheck ? (
           <>
-          <button className='btn' type='button'>
-            <Link to='/login'>Login</Link>
-          </button>
-          <a className="nav-item">
-                <Link
-                  id="nav-item"
-                  to="/recipeFinder"
-                  className={currentPage === '/recipeFinder' ? 'active' : 'nav-link'}>
-                  Find Recipe
-                </Link>
-          </a>
+            <button className="btn" type="button">
+              <Link to="/login">Login</Link>
+            </button>
+            <button className="btn" type="button">
+              <Link
+                id="nav-item"
+                to="/recipeFinder"
+                className={
+                  currentPage === "/recipeFinder" ? "active" : "nav-link"
+                }
+              >
+                Find Recipe
+              </Link>
+            </button>
           </>
         ) : (
           <button
-            className='btn'
-            type='button'
+            className="btn"
+            type="button"
             onClick={() => {
               auth.logout();
             }}
