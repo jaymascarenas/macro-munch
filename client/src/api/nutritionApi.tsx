@@ -22,8 +22,7 @@
 //         return Promise.reject("Could not fetch nutritional facts");
 //       }
 //     };
-//     const search = s
-// earchNutrition();
+//     const search = SearchNutrition();
 //     return search;
 // }
 // export default NutritionFacts;
