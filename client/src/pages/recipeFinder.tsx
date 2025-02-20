@@ -53,7 +53,7 @@ const RecipeFinder = () => {
   return (
     <div>
       <h1> Recipe Finder</h1>
-      <p>find a recipe and and save it to your dashboard!</p>
+      <p>Find a recipe and save it to your dashboard!</p>
       <form onSubmit={handleFormSubmit}>
         <input
           type="text"
