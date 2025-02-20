@@ -1,7 +1,7 @@
-// import NutritionFacts from '../interfaces/Nutrition';
+// import SearchNutrition from '../interfaces/Nutrition';
 
 
-// const NutritionFacts = (props:  NutritionFacts | string) => {
+// const SearchNutrition = (props:  NutritionFacts | string) => {
 //     const meal = props;
     
 //     const nutritional = async () => {
@@ -22,7 +22,7 @@
 //         return Promise.reject("Could not fetch nutritional facts");
 //       }
 //     };
-//     const search = searchNutrition();
+//     const search = SearchNutrition();
 //     return search;
 // }
-// export default NutritionFacts;
+// export default SearchNutrition;
