@@ -1,8 +1,10 @@
 import React from 'react';
 import RecipeCard from '../api/recipeApi';
 import Recipe from '../interfaces/Recipe';
-const RecipeFinder = () => {
+import SavedRecipes from './savedRecipes';
 
+const RecipeFinder = () => {
+const savedRecipes: string[] = []
   const [meal, setMeal] = React.useState<string>('');
   const [recipe, setRecipe] = React.useState<Recipe>();
 
@@ -12,46 +14,65 @@ const RecipeFinder = () => {
 
   const handleFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    RecipeCard(meal).then((data) => {
-      if (data.meals !== null) {
-        setRecipe(data.meals[0]);
-        console.log(data.meals[0]);
-      } else {
-        setRecipe({
-          strMeal: "No meal found",
-          strIngredient1: '',
-          strMeasure1: '',
-          strIngredient2: '',
-          strMeasure2:'',
-          strIngredient3: '',
-          strMeasure3: '',
-          strIngredient4: '',
-          strMeasure4: '',
-          strIngredient5: '',
-          strMeasure5: '',
-          strIngredient6: '',
-          strMeasure6: '',
-          strIngredient7: '',
-          strMeasure7: '',
-          strIngredient8: '',
-          strMeasure8: '',
-          strIngredient9: '',
-          strMeasure9: '',
-          strIngredient10: '',
-          strMeasure10: '',
-        });
-      }
-      })
+    fetchRecipe(meal);
+   
   }
+  const fetchRecipe = (props: string) => {
+ RecipeCard(props).then((data) => {
+   if (data.meals !== null) {
+     savedRecipes.push(data.meals[0]);
+     setRecipe(data.meals[0]);
+     console.log(data.meals[0]);
+   } else {
+     setRecipe({
+       strMeal: "No meal found",
+       strIngredient1: "",
+       strMeasure1: "",
+       strIngredient2: "",
+       strMeasure2: "",
+       strIngredient3: "",
+       strMeasure3: "",
+       strIngredient4: "",
+       strMeasure4: "",
+       strIngredient5: "",
+       strMeasure5: "",
+       strIngredient6: "",
+       strMeasure6: "",
+       strIngredient7: "",
+       strMeasure7: "",
+       strIngredient8: "",
+       strMeasure8: "",
+       strIngredient9: "",
+       strMeasure9: "",
+       strIngredient10: "",
+       strMeasure10: "",
+     });
+   }
+ });
+   }
   const handleIngredient = (ingredient: string) => {
     if (ingredient === '') {
       return;
     }
     console.log(ingredient);
-    
-   }
+  }
+  const readlocalStorage = () => {
+    const savedRecipes = localStorage.getItem("recipe");
+    if (savedRecipes) {
+      return JSON.parse(savedRecipes);
+    }
+    return [];
+  }
+  const handleRecipeSave =  () => {
+    const savedRecipes = readlocalStorage();
+    if (recipe !== undefined) {
+      savedRecipes.push(recipe.strMeal as string);
+      localStorage.setItem("recipe", JSON.stringify(savedRecipes));
+    }
+  }
   return (
     <div>
+      <div className="headContainer">
       <h1> Recipe Finder</h1>
       <p>Find a recipe and save it to your dashboard!</p>
       <form onSubmit={handleFormSubmit}>
@@ -61,9 +82,14 @@ const RecipeFinder = () => {
           onChange={handleInputChange}
         />
         <button type="submit">Search</button>
-      </form>
+        </form>
+      </div>
+      <SavedRecipes/>
       {recipe ? (
         <div>
+          <div className="buttonContainer">
+            <button onClick={() => handleRecipeSave() }><p>save Meal</p></button>
+          </div>
           <h2 className="recipeName">{recipe.strMeal}</h2>
           <div className="cardContainer">
             <img
@@ -117,9 +143,7 @@ const RecipeFinder = () => {
           <div></div>
         </div>
       ) : (
-        <div>
-          <h2>Search for a recipe</h2>
-        </div>
+        <></>
       )}
     </div>
   );
