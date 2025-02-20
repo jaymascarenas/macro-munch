@@ -23,22 +23,6 @@ const Navbar = () => {
       <div>
         {!loginCheck ? (
           <>
-<<<<<<< HEAD
-            <button className="btn" type="button">
-              <Link to="/login">Login</Link>
-            </button>
-            <button className="btn" type="button">
-              <Link
-                id="nav-item"
-                to="/recipeFinder"
-                className={
-                  currentPage === "/recipeFinder" ? "active" : "nav-link"
-                }
-              >
-                Find Recipe
-              </Link>
-            </button>
-=======
             <button className="btn" type="button" style={{marginRight: '10px'}}>
               <Link to="/signup">Signup</Link>
             </button>
@@ -53,7 +37,6 @@ const Navbar = () => {
                   Find Recipe
                 </Link>
           </a>
->>>>>>> b7943d92204ce424c81f36d3fe037e370f8a8c28
           </>
         ) : (
           <button
