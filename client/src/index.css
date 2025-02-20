@@ -1168,9 +1168,11 @@ form [type='radio'] {
 }
 
 .container {
+  display:flex;
+  justify-content:center;
   width: 85%;
   max-width: 1200px;
-  margin-left: auto;
+  margin-left:2%;
   margin-right: auto;
 }
 
@@ -1709,7 +1711,7 @@ form [type='radio'] {
 .recipeName{
   display:flex;
   justify-content: center;
-  margin: 5% 30% 0 0;
+  margin: 1% 20% 0 0;
   font-size: 2rem;
   font-weight: bold;
 }
@@ -1721,7 +1723,7 @@ form [type='radio'] {
 }
 #recipePic{
   height: 500px;
-  width: 45%;
+  width: 30%;
   border-radius: 15px;
   border:#000000 solid 2px;
 }
@@ -1743,4 +1745,36 @@ li{
   display:flex;
   flex-direction: column;
   flex-wrap: wrap;
+}
+.sideBar{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+#sideBar{
+  font-size: 30px;
+  margin-left: 5%;
+  text-decoration: underline;
+}
+.headContainer{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+.recipeForm{
+  margin-left:80%;
+}
+.buttonContainer{
+  display: flex;
+  justify-content: end;
+  margin-right:10%;
+}
+.viableRecipes{
+  display:flex;
+  flex-direction: column;
+  align-items: start;
+}
+#recipeTag{
+  margin-left:2%;
+  margin-top: 1%;
 }
