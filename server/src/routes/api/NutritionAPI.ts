@@ -10,7 +10,9 @@ router.get('/:food', async (req: Request, res: Response) => {
   const response = await fetch(
     `${process.env.USDA_BASE_URL_API}/foods/search?api_key=${process.env.USDA_API_KEY}&query=${food}`
   );
+  
 const data = await response.json();
+
   return data;
   } catch (error: any) {
     res.status(500).json({ message: error.message });
