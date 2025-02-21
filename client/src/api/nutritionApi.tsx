@@ -1,8 +1,8 @@
 import NutrientFacts from '../interfaces/Nutrition';
 
 
-const SearchNutrition = (props:  NutritionFacts | string) => {
-    const meal = props;
+const SearchNutrition = (props:  NutrientFacts | string) => {
+    const food = props;
     
     const nutritional = async () => {
       try {
@@ -22,32 +22,23 @@ const filterProperties = (array, properties) =>
       }, {})
     );
   
-  // Example usage:
-  const data = [
-    { name: 'Alice', age: 25, city: 'New York', occupation: 'Engineer' },
-    { name: 'Bob', age: 30, city: 'San Francisco', occupation: 'Designer' },
-    { name: 'Charlie', age: 35, city: 'Los Angeles', occupation: 'Teacher' }
+  const foodNutrients = [
+    {nutrientId: 0, nutrientName: "", derivationDescription: ""}
   ];
   
-  const filteredData = filterProperties(data, ['name', 'age']);
+  const filteredFoods = filterProperties(foodNutrients, ['nutrientId', 'nutrientName', 'derivationDescription']);
   
-  console.log(filteredData);
-  // Output:
-  // [
-  //   { name: 'Alice', age: 25 },
-  //   { name: 'Bob', age: 30 },
-  //   { name: 'Charlie', age: 35 }
-  // ]
+  console.log(filteredFoods);
 
-//         const data = await response.json();
-//         console.log(data)
-//         return data;
-//       } catch (err) {
-//         console.log("Unable to retrieve data", err);
-//         return Promise.reject("Could not fetch nutritional facts");
-//       }
-//     };
-//     const search = SearchNutrition();
-//     return search;
-// }
+        const data = await response.json();
+        console.log(data)
+        return data;
+      } catch (err) {
+        console.log("Unable to retrieve data", err);
+        return Promise.reject("Could not fetch nutritional facts");
+      }
+    };
+    const search = SearchNutrition();
+    return search;
+}
 export default SearchNutrition;
