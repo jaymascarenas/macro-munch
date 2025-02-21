@@ -5,7 +5,7 @@ export const seedRecipes = async () => {
     [
       { name: 'nachos', 
         ingredients: ['tortilla chips', 'cheddar cheese', 'jalapenos', 'ground beef'], 
-        description: 'really good nachos',
+        description: 'really good nachos' 
       },
       {
         name: 'french fries',
