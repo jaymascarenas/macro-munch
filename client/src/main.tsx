@@ -9,6 +9,7 @@ import Home from "./pages/Home.tsx";
 import Login from "./pages/Login.tsx";
 import Signup from "./pages/Signup.tsx";
 import RecipeFinder from "./pages/recipeFinder.tsx";
+import SavedRecipe from "./pages/savedRecipes.tsx";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "recipeFinder",
         element: <RecipeFinder />,
+      },
+      {
+        path: "savedRecipe",
+        element: <SavedRecipe />,
       },
     ],
   },

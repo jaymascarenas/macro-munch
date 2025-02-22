@@ -23,31 +23,78 @@ const Navbar = () => {
       <div>
         {!loginCheck ? (
           <>
-            <button className="btn" type="button" style={{marginRight: '10px'}}>
+            <button
+              className="btn"
+              type="button"
+              style={{ marginRight: "10px" }}
+            >
               <Link to="/signup">Signup</Link>
             </button>
-            <button className="btn" type="button">
+            <button
+              className="btn"
+              type="button"
+              style={{ marginRight: "10px" }}
+            >
               <Link to="/login">Login</Link>
             </button>
-            <a className="nav-item">
-                <Link
-                  id="nav-item"
-                  to="/recipeFinder"
-                  className={currentPage === '/recipeFinder' ? 'active' : 'nav-link'}>
-                  Find Recipe
-                </Link>
-          </a>
+            <button className="btn" style={{ marginRight: "10px" }}>
+              <Link
+                id="nav-item"
+                to="/recipeFinder"
+                className={
+                  currentPage === "/recipeFinder" ? "active" : "nav-link"
+                }
+              >
+                Find Recipe
+              </Link>
+            </button>
+            <button className="btn" style={{ marginRight: "10px" }}>
+              <Link
+                id="nav-item"
+                to="/savedRecipe"
+                className={
+                  currentPage === "/savedRecipe" ? "active" : "nav-link"
+                }
+              >
+                Saved Recipes
+              </Link>
+            </button>
           </>
         ) : (
-          <button
-            className="btn"
-            type="button"
-            onClick={() => {
-              auth.logout();
-            }}
-          >
-            Logout
-          </button>
+          <div>
+            <button
+              className="btn"
+              type="button"
+              style={{ marginRight: "10px" }}
+              onClick={() => {
+                auth.logout();
+              }}
+            >
+              Logout
+            </button>
+            <button className="btn" style={{ marginRight: "10px" }}>
+              <Link
+                id="nav-item"
+                to="/recipeFinder"
+                className={
+                  currentPage === "/recipeFinder" ? "active" : "nav-link"
+                }
+              >
+                Find Recipe
+              </Link>
+            </button>
+            <button className="btn" style={{ marginRight: "10px" }}>
+              <Link
+                id="nav-item"
+                to="/savedRecipe"
+                className={
+                  currentPage === "/savedRecipe" ? "active" : "nav-link"
+                }
+              >
+                Saved Recipes
+              </Link>
+            </button>
+          </div>
         )}
       </div>
     </div>
