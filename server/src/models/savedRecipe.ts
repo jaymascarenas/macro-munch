@@ -1,12 +1,19 @@
-import { DataTypes, type Sequelize, Model,type Optional } from 'sequelize';
+import { 
+    Model,
+    type Optional,
+    DataTypes, 
+    type Sequelize, 
+    type ForeignKey,
+} from 'sequelize';
 
-
+import type { User } from './user.js';
 
 interface RecipeAttributes {
     recipe_id: number;
     name: string;
     ingredients: string[];
     description: string;
+    UserId?: number;
 }
 
 interface RecipeCreationAttributes extends Optional<RecipeAttributes, 'recipe_id'> {}
@@ -16,6 +23,7 @@ export class Recipe extends Model<RecipeAttributes, RecipeCreationAttributes> im
     public name!: string;
     public ingredients!: string[];
     public description!: string;
+    declare UserId: ForeignKey<User['id']>;
 }
 
 export function RecipeFactory(sequelize: Sequelize): typeof Recipe {
@@ -43,6 +51,7 @@ export function RecipeFactory(sequelize: Sequelize): typeof Recipe {
         {
             sequelize,
             tableName: 'Recipe',
+            timestamps: false,
             freezeTableName: true,
         }
     );

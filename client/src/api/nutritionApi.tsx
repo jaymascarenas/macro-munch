@@ -1,4 +1,4 @@
-{/*
+/*
     import NutritionFacts from '../interfaces/Nutrition';
 
 
@@ -28,4 +28,4 @@
         return search;
     }
     export default NutritionFacts;
-*/}
+*/

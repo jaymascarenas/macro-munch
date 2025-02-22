@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import auth from "../utils/auth";
+import auth from "../utils/auth"
 
 const Navbar = () => {
   const currentPage = useLocation().pathname;
