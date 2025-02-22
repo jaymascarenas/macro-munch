@@ -5,4 +5,11 @@ import { RecipeFactory } from './savedRecipe.js';
 const User = UserFactory(sequelize);
 const Recipe = RecipeFactory(sequelize);
 
-export { User, Recipe }; //add Recipe once model is complete for it
+User.hasMany(Recipe, {
+    onDelete: 'CASCADE',
+})
+Recipe.belongsTo(User, {
+    onDelete:'CASCADE',
+})
+
+export {sequelize, User, Recipe }; //add Recipe once model is complete for it

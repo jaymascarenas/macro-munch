@@ -26,6 +26,7 @@ export const authenticateToken = (
       return next();
     });
   } else {
+    console.log(authHeader)
     res.sendStatus(401); // Unauthorized
   }
 };
