@@ -94,6 +94,18 @@ const Navbar = () => {
                 Saved Recipes
               </Link>
             </button>
+            <button
+              className="btn"
+              type="button"
+              style={{ marginRight: "10px" }}
+            >
+              <Link to="/nutritionFacts">Nutrition Facts</Link>
+            </button>
+            <button
+              className="btn"
+              type="button"
+              style={{ marginRight: "10px" }}
+            ></button>
           </div>
         )}
       </div>
