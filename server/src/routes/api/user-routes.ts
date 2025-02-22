@@ -20,6 +20,7 @@ router.get('/', async (_req: Request, res: Response) => {
 router.get('/:id', async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
+  
     const user = await User.findByPk(id, {
       attributes: { exclude: ['password'] }
     });
