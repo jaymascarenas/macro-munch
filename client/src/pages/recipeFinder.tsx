@@ -1,6 +1,7 @@
 import React from 'react';
 import RecipeCard from '../api/recipeApi';
 import Recipe from '../interfaces/Recipe';
+import SavedRecipe from './savedRecipes';
 
 const RecipeFinder = () => {
   const [meal, setMeal] = React.useState<string>('');
@@ -44,6 +45,7 @@ const RecipeFinder = () => {
         );
       } else
       { setRecipe(data.meals[0]); }
+      console.log(SavedRecipe);
      });
   }
   const handleIngredient = (ingredient: string) => {
