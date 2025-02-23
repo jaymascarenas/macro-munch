@@ -21,13 +21,8 @@ const Nutrients: React.FC = () => {
 
   const fetchFood = async (props: string) => {
     try {
-      const data = await SearchNutrition(props);
-   if (data.food && data.food.length > 0) {
-     setNutritionFacts(data.food[0]);
-     console.log(data.food[0]);
-   } else {
-     setNutritionFacts(null);
-   }
+      const data = await SearchNutrition(props)
+     setNutritionFacts(data);
    } catch (err) {
     console.error('Could not fetch nutrient data', err);
    }
