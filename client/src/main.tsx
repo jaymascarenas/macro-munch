@@ -10,6 +10,7 @@ import Login from "./pages/Login.tsx";
 import Signup from "./pages/Signup.tsx";
 import RecipeFinder from "./pages/recipeFinder.tsx";
 import SavedRecipe from "./pages/savedRecipes.tsx";
+import Nutrients from "./pages/nutritionFacts.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/Nutrients",
+        element: <Nutrients />,
       },
       {
         path: "/login",

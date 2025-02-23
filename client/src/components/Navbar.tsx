@@ -23,42 +23,41 @@ const Navbar = () => {
       <div>
         {!loginCheck ? (
           <>
-            <button
+              <Link to="/signup"
               className="btn"
-              type="button"
-              style={{ marginRight: "10px" }}
-            >
-              <Link to="/signup">Signup</Link>
-            </button>
-            <button
-              className="btn"
-              type="button"
-              style={{ marginRight: "10px" }}
-            >
-              <Link to="/login">Login</Link>
-            </button>
-            <button className="btn" style={{ marginRight: "10px" }}>
+              style={{ marginRight: "10px" }}>Signup</Link>
+            
+              <Link to="/login"
+             className="btn"
+              style={{ marginRight: "10px" }}>Login</Link>
+          
               <Link
+              // className="btn" 
+              style={{ marginRight: "10px" }}
                 id="nav-item"
                 to="/recipeFinder"
                 className={
                   currentPage === "/recipeFinder" ? "active" : "nav-link"
-                }
-              >
-                Find Recipe
-              </Link>
-            </button>
-            <button className="btn" style={{ marginRight: "10px" }}>
+                }>Find Recipe</Link>
+          
               <Link
+              // className="btn" 
+              style={{ marginRight: "10px" }}
                 id="nav-item"
                 to="/savedRecipe"
                 className={
                   currentPage === "/savedRecipe" ? "active" : "nav-link"
-                }
-              >
-                Saved Recipes
-              </Link>
-            </button>
+                }>Saved Recipes</Link>
+          
+              <Link 
+              // className="btn" 
+              style={{ marginRight: "10px" }}
+                id="nav-item"
+                to="/savedRecipe"
+                className={
+                  currentPage === "/nutritionFacts" ? "active" : "nav-link"
+                }>Nutrition Facts</Link>
+            
           </>
         ) : (
           <div>
@@ -72,28 +71,33 @@ const Navbar = () => {
             >
               Logout
             </button>
-            <button className="btn" style={{ marginRight: "10px" }}>
+            
               <Link
+              // className="btn" 
+              style={{ marginRight: "10px" }}
                 id="nav-item"
                 to="/recipeFinder"
                 className={
                   currentPage === "/recipeFinder" ? "active" : "nav-link"
-                }
-              >
-                Find Recipe
-              </Link>
-            </button>
-            <button className="btn" style={{ marginRight: "10px" }}>
+                }>Find Recipe</Link>
+          
               <Link
+              // className="btn" 
+              style={{ marginRight: "10px" }}
                 id="nav-item"
                 to="/savedRecipe"
                 className={
                   currentPage === "/savedRecipe" ? "active" : "nav-link"
-                }
-              >
-                Saved Recipes
-              </Link>
-            </button>
+                }>Saved Recipes</Link>
+
+            <Link
+              // className="btn" 
+              style={{ marginRight: "10px" }}
+                id="nav-item"
+                to="/nutritionFacts"
+                className={
+                  currentPage === "/nutritionFacts" ? "active" : "nav-link"
+                }>Nutrition Facts</Link>
           </div>
         )}
       </div>
