@@ -9,7 +9,6 @@ User.hasMany(Recipe, {
     onDelete: 'CASCADE',
 })
 Recipe.belongsTo(User, {
-    onDelete:'CASCADE',
 })
 
 export {sequelize, User, Recipe }; //add Recipe once model is complete for it
