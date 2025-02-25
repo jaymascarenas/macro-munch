@@ -1,7 +1,7 @@
 import NutrientFacts from '../interfaces/Nutrition';
 
 
-const SearchNutrition = async (food: string) =>{ 
+const SearchNutrition = async (food: NutrientFacts | string) =>{ 
       try {
         const response = await fetch(
           `/api/nutrition/${food}`

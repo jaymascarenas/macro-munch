@@ -23,6 +23,7 @@ const Nutrients = () => {
     try {
       const data = await SearchNutrition(props);
      setNutritionFacts(data);
+     console.log(Response);
    } catch (err) {
     console.error('Could not fetch nutrient data', err);
    }

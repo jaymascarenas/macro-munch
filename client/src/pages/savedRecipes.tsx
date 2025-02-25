@@ -1,26 +1,29 @@
 // Purpose: This file contains the savedRecipes component which displays the saved recipes of the user.
-import RecipeCard from "../api/recipeApi";
+
 import { useState, useEffect } from "react";
 import Recipe from "../interfaces/Recipe";
 import retrieveRecipe from "../api/savedRecipeAPI";
 import { RecipeCardProps } from "../interfaces/Recipe";
-import { retrieveUsers } from "../api/userAPI";
+
+import auth from "../utils/auth";
 
 const SavedRecipe = () => {
   const [recipe, setRecipe] = useState<Recipe>();
-  const GenerateSavedRecipes = () => {
-    useEffect(() => {
-      retrieveUsers()
-        .then((data) => {console.log(data)})
-        .then(() => {
-          // retrieveRecipe().then((data: string | RecipeCardProps) => {
-          //   console.log(data);
-          // });
-        });
+  useEffect(() => {
+    console.log(auth.getProfile().id);
+    retrieveRecipe(auth.getProfile().id).then((data) => {
+      console.log(data);
+    });
+     
     }, []);
+
+  const GenerateSavedRecipes = () => {
+    
+    return (<>
+    </>)
     // fetch saved recipes from database
     // return saved recipes
-    {
+    
       /*      const handlesavedRecipeClick = (recipes: string) => {
             RecipeCard(recipes).then((data) => {
                 const viewRecipe = data.meals[0];
@@ -42,6 +45,7 @@ const SavedRecipe = () => {
             
         };
         if (savedRecipes) {
+            console.log(`${auth.getProfile().id}`);
             const viableRecipe = JSON.parse(savedRecipes);
             return viableRecipe.map((recipe: string) => {
                 return (
@@ -52,7 +56,7 @@ const SavedRecipe = () => {
                 ) 
             })
         }*/
-    }
+    
   };
   const handleIngredient = (ingredient: string) => {
     if (ingredient === "") {
