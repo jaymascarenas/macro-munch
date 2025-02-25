@@ -1,13 +1,16 @@
 import React from 'react';
 import SearchNutrition from '../api/nutritionApi';
 import NutrientFacts from '../interfaces/Nutrition';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 
 
 const Nutrients = () => {
 
   const [food, setFood] = useState<string>('');
-  const [nutritionFacts, setNutritionFacts] = useState<NutrientFacts | null>();
+  const [nutritionFacts, setNutritionFacts] = useState<NutrientFacts[] | null>(null);
+  useEffect(() => {
+    console.log(nutritionFacts);
+  }, [nutritionFacts]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFood(e.target.value);
@@ -21,9 +24,12 @@ const Nutrients = () => {
 
   const fetchFood = async (props: string) => {
     try {
-      const data = await SearchNutrition(props);
+
+      const data = await SearchNutrition(props)
+      console.log(data)
+
      setNutritionFacts(data);
-     console.log(Response);
+    
    } catch (err) {
     console.error('Could not fetch nutrient data', err);
    }
@@ -45,28 +51,28 @@ const Nutrients = () => {
         </form>
       </div>
       
-      {nutritionFacts ? (
+      {nutritionFacts && nutritionFacts.length > 0? (
         <div>
-          <h2 className="foodName">{nutritionFacts?.foodName}</h2>
+          <h2 className="foodName">{food}</h2>
           <div className="cardContainer">
             <img
               id="nutritionalPic"
-              src='./dist/assets/nutritional-pic.webp'
+              src='./assets/nutritional-pic.webp'
               alt='cool nutritional picture'
             />
             <div className="listContainer">
               <h3>Nutritional Facts</h3>
               <ul id="nutritientList">
-                {nutritionFacts.foodNutrients.map((nutrient, index) => (
-                  <li key={index}>{nutrient}</li>
-                ))};
-              </ul>
-            </div>
-          </div>
+                {nutritionFacts.map((nutrient) => (
+                  <li key={nutrient.nutrientId}>{nutrient.nutrientName}</li>
+                ))}
+                 </ul>
+                 </div>
+                 </div>
         </div>
-      ) : (
-        <>Nutritional Data</>
-      )}
+              ) : (
+                <p> No data available </p>
+              )}
     </div>
   );
 
