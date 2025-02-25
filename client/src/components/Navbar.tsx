@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import auth from "../utils/auth"
+import auth from "../utils/auth";
 
 const Navbar = () => {
   const currentPage = useLocation().pathname;
@@ -53,14 +53,15 @@ const Navbar = () => {
               // className="btn" 
               style={{ marginRight: "10px" }}
                 id="nav-item"
-                to="/savedRecipe"
+                to="/Nutrients"
                 className={
-                  currentPage === "/nutritionFacts" ? "active" : "nav-link"
+                  currentPage === "/Nutrients" ? "active" : "nav-link"
                 }>Nutrition Facts</Link>
             
           </>
         ) : (
           <div>
+            {`Logged in as: ${auth.getProfile().username } `}
             <button
               className="btn"
               type="button"

@@ -38,4 +38,4 @@ console.log(filteredFoods);
   }
 });
 
-export default router;
+export {router as nutritionRouter};
