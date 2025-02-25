@@ -1,6 +1,7 @@
 interface NutrientFacts {
-        [key: string]: string | string[];
-        foodNutrients: string[];
-      }
+  nutrientId: number;
+  nutrientName: string;
+  derivationDescription: string;
+}
 
 export default NutrientFacts;
