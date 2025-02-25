@@ -62,10 +62,9 @@ const RecipeFinder = () => {
     return [];
   }
   const handleRecipeSave =  () => {
-    const savedRecipes = readlocalStorage();
+    
     if (recipe !== undefined) {
-      savedRecipes.push(recipe.strMeal as string);
-      localStorage.setItem("recipe", JSON.stringify(savedRecipes));
+      console.log(recipe);
     }
   }
   return (

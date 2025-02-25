@@ -3,23 +3,45 @@
 import { useState, useEffect } from "react";
 import Recipe from "../interfaces/Recipe";
 import retrieveRecipe from "../api/savedRecipeAPI";
-import { RecipeCardProps } from "../interfaces/Recipe";
-
+import RecipeCard from "../api/recipeApi";
 import auth from "../utils/auth";
 
 const SavedRecipe = () => {
   const [recipe, setRecipe] = useState<Recipe>();
+  const [savedRecipes, setSavedRecipes] = useState<string[]>([]);
   useEffect(() => {
-    console.log(auth.getProfile().id);
+    console.log();
     retrieveRecipe(auth.getProfile().id).then((data) => {
       console.log(data);
+      const ViableRecipes = data.map((recipe: any) => {
+        return {
+          name: recipe.name,
+        };
+       });
+      console.log(ViableRecipes);
+      setSavedRecipes(ViableRecipes);
     });
      
     }, []);
+  const handleRecipeClick = (recipe: string) => {
+    console.log(recipe);
+    RecipeCard(recipe).then((data) => {
+      const viewRecipe = data.meals[0];
+      console.log(viewRecipe);
+      setRecipe(viewRecipe);
 
+    })
+  }
   const GenerateSavedRecipes = () => {
     
     return (<>
+      {savedRecipes.map((recipe: any) => {
+      return (
+        <div>
+          <a onClick={() => handleRecipeClick(recipe.name)}>{recipe.name}</a>
+        </div>
+      );
+    })}
     </>)
     // fetch saved recipes from database
     // return saved recipes
