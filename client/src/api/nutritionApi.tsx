@@ -1,7 +1,7 @@
 import NutrientFacts from '../interfaces/Nutrition';
 
 
-const SearchNutrition = async (food: string) =>{ 
+const SearchNutrition = async (food: NutrientFacts | string)=>{ 
       try {
         const response = await fetch(
           `/api/nutrition/${food}`
@@ -11,7 +11,7 @@ const SearchNutrition = async (food: string) =>{
           throw new Error("Network response was not ok");
         }
 
-        const data = await response.json();
+        const data: NutrientFacts = await response.json();
         return data;
   
       } catch (err) {
