@@ -2,7 +2,7 @@ import { RecipeCardProps } from "../interfaces/Recipe";
 
 const retrieveRecipe = async (id: number | null): Promise<RecipeCardProps | string> => {
     try {
-      const response = await fetch(`/api/recipes/user:${id}`, {
+      const response = await fetch(`/api/recipes/user/${id}`, {
         headers: {
           'Content-Type': 'application/json',
         }
@@ -16,6 +16,6 @@ const retrieveRecipe = async (id: number | null): Promise<RecipeCardProps | stri
       console.log('error from data retrieval', err);
       return Promise.reject('Could not fetch recipe');
     }
-  };
+  }
 
-  export { retrieveRecipe };
+  export default retrieveRecipe ;

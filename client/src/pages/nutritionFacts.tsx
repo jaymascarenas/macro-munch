@@ -4,7 +4,7 @@ import NutrientFacts from '../interfaces/Nutrition';
 import { useState } from 'react';
 
 
-const Nutrients: React.FC = () => {
+const Nutrients = () => {
 
   const [food, setFood] = useState<string>('');
   const [nutritionFacts, setNutritionFacts] = useState<NutrientFacts | null>();
@@ -21,7 +21,7 @@ const Nutrients: React.FC = () => {
 
   const fetchFood = async (props: string) => {
     try {
-      const data = await SearchNutrition(props)
+      const data = await SearchNutrition(props);
      setNutritionFacts(data);
    } catch (err) {
     console.error('Could not fetch nutrient data', err);
