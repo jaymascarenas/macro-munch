@@ -1,15 +1,16 @@
 import { RecipeCardProps } from "../interfaces/Recipe";
 import auth from '../utils/auth';
 
-const loggedInUser = auth.getProfile().id;
-console.log(loggedInUser);
+
 
 
 const retrieveRecipe = async (loggedInUser: number | null): Promise<RecipeCardProps | string> => {
     try {
-      const response = await fetch(`/api/recipes/user:${loggedInUser}`, {
+      const response = await fetch(`/api/recipes/user/${loggedInUser}`, {
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.getToken()}`,
         }
       });
       const data = await response.json();
@@ -21,6 +22,6 @@ const retrieveRecipe = async (loggedInUser: number | null): Promise<RecipeCardPr
       console.log('error from data retrieval', err);
       return Promise.reject('Could not fetch recipe');
     }
-  };
+  }
 
-  export { retrieveRecipe };
+  export default retrieveRecipe ;
