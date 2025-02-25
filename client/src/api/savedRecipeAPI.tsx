@@ -1,8 +1,13 @@
 import { RecipeCardProps } from "../interfaces/Recipe";
+import auth from '../utils/auth';
 
-const retrieveRecipe = async (id: number | null): Promise<RecipeCardProps | string> => {
+const loggedInUser = auth.getProfile().id;
+console.log(loggedInUser);
+
+
+const retrieveRecipe = async (loggedInUser: number | null): Promise<RecipeCardProps | string> => {
     try {
-      const response = await fetch(`/api/recipes/user:${id}`, {
+      const response = await fetch(`/api/recipes/user:${loggedInUser}`, {
         headers: {
           'Content-Type': 'application/json',
         }

@@ -2,10 +2,11 @@
 import RecipeCard from "../api/recipeApi";
 import { useState} from "react";
 import Recipe from "../interfaces/Recipe";
-const SavedRecipe = () => {
+import auth from "../utils/auth";
 
-
-    const [recipe, setRecipe] = useState<Recipe>();
+const SavedRecipe = () => 
+{
+  const [recipe, setRecipe] = useState<Recipe>();
     const GenerateSavedRecipes = () => {
         // fetch saved recipes from database
         // return saved recipes
@@ -30,6 +31,7 @@ const SavedRecipe = () => {
             
         };
         if (savedRecipes) {
+            console.log(`${auth.getProfile().id}`);
             const viableRecipe = JSON.parse(savedRecipes);
             return viableRecipe.map((recipe: string) => {
                 return (
