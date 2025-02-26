@@ -43,7 +43,6 @@ router.get('/:id', async (req: Request, res: Response) => {
       if (!recipeData || recipeData.length === 0) {
         res.status(404).json({ message: 'No recipe was found with that id!'});
       }
-
       res.status(200).json(recipeData);
     } catch(err) {
       res.status(500).json(err);
@@ -53,6 +52,7 @@ router.get('/:id', async (req: Request, res: Response) => {
 
   router.post('/', async (req: Request, res: Response) => {
     try {
+      console.log(req.body);
       const recipeData = await Recipe.create(req.body);
       res.status(200).json(recipeData);
     } catch (err) {

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Recipe from "../interfaces/Recipe";
-import retrieveRecipe from "../api/savedRecipeAPI";
+import savedRecipeAPI from "../api/savedRecipeAPI";
 import RecipeCard from "../api/recipeApi";
 import auth from "../utils/auth";
 
@@ -11,7 +11,7 @@ const SavedRecipe = () => {
   const [savedRecipes, setSavedRecipes] = useState<string[]>([]);
   useEffect(() => {
     console.log();
-    retrieveRecipe(auth.getProfile().id).then((data) => {
+    savedRecipeAPI.retrieveRecipe(auth.getProfile().id).then((data) => {
       console.log(data);
       const ViableRecipes = data.map((recipe: any) => {
         return {
