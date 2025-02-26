@@ -1784,4 +1784,16 @@ li{
 #ingredient{
   margin-right: 20%;
 }
+.flavor{
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+}
+#flavor{
+  color: purple;
+  margin-left: 40%;
+}
+#login-carImg{
+height: 1400px;
+}
 /* MEDIA QUERIES */

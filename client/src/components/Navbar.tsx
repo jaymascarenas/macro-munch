@@ -31,36 +31,7 @@ const Navbar = () => {
               Login
             </Link>
 
-            <Link
-              // className="btn"
-              style={{ marginRight: "10px" }}
-              id="nav-item"
-              to="/recipeFinder"
-              className={
-                currentPage === "/recipeFinder" ? "active" : "nav-link"
-              }
-            >
-              Find Recipe
-            </Link>
-
-            <Link
-              // className="btn"
-              style={{ marginRight: "10px" }}
-              id="nav-item"
-              to="/savedRecipe"
-              className={currentPage === "/savedRecipe" ? "active" : "nav-link"}
-            >
-              Saved Recipes
-            </Link>
-
-            <Link
-              // className="btn"
-              style={{ marginRight: "10px" }}
-                id="nav-item"
-                to="/Nutrients"
-                className={
-                  currentPage === "/Nutrients" ? "active" : "nav-link"
-                }>Nutrition Facts</Link>
+            
             
           </>
         ) : (

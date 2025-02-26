@@ -1,7 +1,8 @@
 import React from 'react';
 import RecipeCard from '../api/recipeApi';
 import Recipe from '../interfaces/Recipe';
-import SavedRecipe from './savedRecipes';
+import savedRecipeAPI from '../api/savedRecipeAPI';
+import auth from '../utils/auth';
 
 const RecipeFinder = () => {
   const [meal, setMeal] = React.useState<string>('');
@@ -45,7 +46,6 @@ const RecipeFinder = () => {
         );
       } else
       { setRecipe(data.meals[0]); }
-      console.log(SavedRecipe);
      });
   }
   const handleIngredient = (ingredient: string) => {
@@ -54,19 +54,22 @@ const RecipeFinder = () => {
     }
     console.log(ingredient);
   }
-  const readlocalStorage = () => {
-    const savedRecipes = localStorage.getItem("recipe");
-    if (savedRecipes) {
-      return JSON.parse(savedRecipes);
-    }
-    return [];
-  }
-  const handleRecipeSave =  () => {
-    
-    if (recipe !== undefined) {
-      console.log(recipe);
-    }
-  }
+ const handleRecipeSave = () => {
+   if (recipe !== undefined) {
+     console.log(recipe);
+     const newRecipe = recipe.strMeal;
+     console.log(newRecipe);
+     savedRecipeAPI
+       .saveRecipe(auth.getProfile().id, newRecipe)
+       .then((data) => {
+         console.log("Recipe saved:", data);
+       })
+       .catch((err) => {
+         console.error(err);
+       });
+   }
+   
+ };
   return (
     <div>
       <div className="headContainer">
@@ -104,6 +107,7 @@ const RecipeFinder = () => {
                   {recipe.strIngredient2}{" "}
                 </a>
                 <p id="ingredient">{recipe.strMeasure2}</p>
+                
                 <a id="ingredient" onClick={() => handleIngredient(recipe.strIngredient3)}>
                   {recipe.strIngredient3}{" "}
                 </a>

@@ -9,20 +9,20 @@ import {
 import type { User } from './user.js';
 
 interface RecipeAttributes {
-    recipe_id: number;
+    recipe_id?: number;
     name: string;
-    ingredients: string[];
-    description: string;
+    ingredients?: string[];
+    description?: string;
     UserId?: number;
 }
 
 interface RecipeCreationAttributes extends Optional<RecipeAttributes, 'recipe_id'> {}
 
 export class Recipe extends Model<RecipeAttributes, RecipeCreationAttributes> implements RecipeAttributes {
-    public recipe_id!: number;
+    public recipe_id?: number;
     public name!: string;
-    public ingredients!: string[];
-    public description!: string;
+    public ingredients?: string[];
+    public description?: string;
     declare UserId: ForeignKey<User['id']>;
 }
 
@@ -40,10 +40,14 @@ export function RecipeFactory(sequelize: Sequelize): typeof Recipe {
             },
             ingredients: {
                 type: DataTypes.ARRAY(DataTypes.STRING),
-                allowNull: false,
+                allowNull: true,
             },
             description: {
                 type: DataTypes.STRING,
+                allowNull: true,
+            },
+            UserId: {
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
     
