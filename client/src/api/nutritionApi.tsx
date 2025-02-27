@@ -1,11 +1,17 @@
 import NutrientFacts from '../interfaces/Nutrition';
+import auth from '../utils/auth';
 
 
 const SearchNutrition = async (food: NutrientFacts | string) =>{ 
       try {
         const response = await fetch(
-          `/api/nutrition/${food}`
-        );
+          `/api/nutrition/${food}`, {
+                    method: "GET",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${auth.getToken()}`,
+                    }
+        });
 
         if (!response.ok) {
           throw new Error("Network response was not ok");
