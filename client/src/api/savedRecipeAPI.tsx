@@ -28,6 +28,7 @@ const saveRecipe = async (
   loggedInUser: number,
   recipeName: string
 ): Promise<RecipeCardProps | string> => {
+  console.log("saveRecipe", loggedInUser, recipeName);
   try {
     const response = await fetch(`/api/recipes/`, {
       method: "POST",
@@ -37,7 +38,9 @@ const saveRecipe = async (
       },
       body: JSON.stringify({
         name: recipeName,
-        UserId: loggedInUser
+        UserId: loggedInUser,
+        ingredients: [],
+        description: "",
       }),
       
     });
