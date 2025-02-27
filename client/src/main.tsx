@@ -35,11 +35,11 @@ const router = createBrowserRouter([
         element: <Signup />,
       },
       {
-        path: "recipeFinder",
+        path: "/recipeFinder",
         element: <RecipeFinder />,
       },
       {
-        path: "savedRecipe",
+        path: "/savedRecipe",
         element: <SavedRecipe />,
       },
     ],

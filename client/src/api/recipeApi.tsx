@@ -1,18 +1,11 @@
 import RecipeCardProps from "../interfaces/Recipe";
-import auth from '../utils/auth';
 
 const RecipeCard = async (props: RecipeCardProps | string) => {
   const meal = props;
 
   try {
     const response = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/search.php?s=${meal}`, {
-                method: "GET",
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: `Bearer ${auth.getToken()}`,
-                }
-      }
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${meal}`
     );
 
     if (!response.ok) {
