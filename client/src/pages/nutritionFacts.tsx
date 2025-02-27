@@ -57,8 +57,8 @@ const Nutrients = () => {
           <div className="cardContainer">
             <img
               id="nutritionalPic"
-              src='./assets/nutritional-pic.webp'
-              alt='cool nutritional picture'
+              src="./assets/nutritional-pic.webp"
+              alt="cool nutritional picture"
             />
             <div className="listContainer">
               <h3>Nutritional Facts</h3>
@@ -66,15 +66,14 @@ const Nutrients = () => {
                 {nutritionFacts.map((nutrient) => (
                   <li key={nutrient.nutrientId}>{nutrient.nutrientName}</li>
                 ))}
-                 </ul>
-                 </div>
-                 </div>
+              </ul>
+            </div>
+          </div>
         </div>
-              ) : (
-                <p> No data available </p>
-              )}
+      ) : (
+        <p> No data available </p>
+      )}
     </div>
   );
-
 };
 export default Nutrients;
