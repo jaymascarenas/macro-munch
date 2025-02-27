@@ -7,7 +7,7 @@ import { useState , useEffect} from 'react';
 const Nutrients = () => {
 
   const [food, setFood] = useState<string>('');
-  const [nutritionFacts, setNutritionFacts] = useState<NutrientFacts[] | null>(null);
+  const [nutritionFacts, setNutritionFacts] = useState<NutrientFacts | null>(null);
   useEffect(() => {
     console.log(nutritionFacts);
   }, [nutritionFacts]);
@@ -57,7 +57,7 @@ const Nutrients = () => {
           <div className="cardContainer">
             <img
               id="nutritionalPic"
-              src="./assets/nutritional-pic.webp"
+              src="./assets/Nutrition-Picture.webp"
               alt="cool nutritional picture"
             />
             <div className="listContainer">
