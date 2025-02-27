@@ -50,7 +50,11 @@ const Home = () => {
                         <h1>
                             Login to search yummy recipes!
                         </h1>
-                        <img id="login-carImg" src={carImg}></img>
+                        <div className="flavor">
+                            <h2 id="flavor">Take a riddde to flavour town!</h2>
+                        
+                            <img id="login-carImg" src={carImg}></img>
+                        </div>
                     </div>
                 ) : (
                     console.log(users),

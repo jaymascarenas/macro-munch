@@ -7,7 +7,8 @@ interface RecipeCardProps {
 }
 
 interface Recipe {
-  strMeal?: string ;
+  recipe_id?: number;
+  strMeal: string ;
   strMealThumb?: string | undefined;
   strInstructions?: string | '';
   id?: number;

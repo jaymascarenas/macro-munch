@@ -1,40 +1,191 @@
 // Purpose: This file contains the savedRecipes component which displays the saved recipes of the user.
-import RecipeCard from "../api/recipeApi";
-import  fetchRecipe  from "./recipeFinder";
-const savedRecipes = () => {
 
-    const GenerateSavedRecipes = () => {
-        // fetch saved recipes from database
-        // return saved recipes
-        const handlesavedRecipeClick = (recipe: string) => {
-            RecipeCard(recipe).then((data) => {
+import { useState, useEffect } from "react";
+import Recipe from "../interfaces/Recipe";
+import savedRecipeAPI from "../api/savedRecipeAPI";
+import RecipeCard from "../api/recipeApi";
+import auth from "../utils/auth";
+
+const SavedRecipe = () => {
+  const [recipe, setRecipe] = useState<Recipe>();
+  const [savedRecipes, setSavedRecipes] = useState<string[]>([]);
+  useEffect(() => {
+    console.log();
+    savedRecipeAPI.retrieveRecipe(auth.getProfile().id).then((data) => {
+      console.log(data);
+      const ViableRecipes = data.map((recipe: any) => {
+        return {
+          name: recipe.name,
+        };
+       });
+      console.log(ViableRecipes);
+      setSavedRecipes(ViableRecipes);
+    });
+     
+    }, []);
+  const handleRecipeClick = (recipe: string) => {
+    console.log(recipe);
+    RecipeCard(recipe).then((data) => {
+      const viewRecipe = data.meals[0];
+      console.log(viewRecipe);
+      setRecipe(viewRecipe);
+
+    })
+  }
+  const GenerateSavedRecipes = () => {
+    
+    return (<>
+      {savedRecipes.map((recipe: any) => {
+      return (
+        <div>
+          <a onClick={() => handleRecipeClick(recipe.name)}>{recipe.name}</a>
+        </div>
+      );
+    })}
+    </>)
+    // fetch saved recipes from database
+    // return saved recipes
+    
+      /*      const handlesavedRecipeClick = (recipes: string) => {
+            RecipeCard(recipes).then((data) => {
                 const viewRecipe = data.meals[0];
                 console.log(viewRecipe);
-                fetchRecipe(viewRecipe);
+                setRecipe(viewRecipe);
             })
-         }
-       const savedRecipes = localStorage.getItem("recipe");
+        }
+        const savedRecipes = localStorage.getItem("recipe");
+        const handleDeleteRecipe = (recipe: string) => {
+          const savedRecipes = localStorage.getItem("recipe");
+          if (savedRecipes) {
+            const viableRecipe = JSON.parse(savedRecipes);
+            const newRecipe = viableRecipe.filter(
+              (item: string) => item !== recipe
+            );
+              localStorage.setItem("recipe", JSON.stringify(newRecipe));
+              window.location.reload();
+          }
+            
+        };
         if (savedRecipes) {
+            console.log(`${auth.getProfile().id}`);
             const viableRecipe = JSON.parse(savedRecipes);
             return viableRecipe.map((recipe: string) => {
                 return (
-                    
-                    <a onClick={() => handlesavedRecipeClick(recipe) } id="recipeTag">{recipe}</a>
-                    
+                    <div>
+                        <a onClick={() => handlesavedRecipeClick(recipe)} id="recipeTag">{recipe}</a>
+                        <button onClick={() => handleDeleteRecipe(recipe)}> delete Me</button>
+                    </div>
                 ) 
             })
-           
-        }
+        }*/
+    
+  };
+  const handleIngredient = (ingredient: string) => {
+    if (ingredient === "") {
+      return;
     }
-    return (
-        <div className="sideBar">
-            <h1 id="sideBar">Saved Recipes</h1>
-            <ul className ="viableRecipes">
-                <GenerateSavedRecipes />
-            </ul>
+    console.log(ingredient);
+  };
+  return (
+    <div className="sideBar">
+      <h1 id="sideBar">Saved Recipes</h1>
+      <ul className="viableRecipes">
+        <GenerateSavedRecipes />
+      </ul>
+      {recipe ? (
+        <>
+          <h2 className="recipeName">{recipe.strMeal}</h2>
+          <div className="cardContainer">
+            <img
+              id="recipePic"
+              src={recipe.strMealThumb}
+              alt={recipe.strMeal}
+            />
+            <div className="listContainer">
+              <h3>Ingredients</h3>
+              <ul id="ingredientsList">
+                <a
+                  id="ingredient"
+                  onClick={() => handleIngredient(recipe.strIngredient1)}
+                >
+                  {recipe.strIngredient1}{" "}
+                </a>
+                <p id="ingredient">{recipe.strMeasure1}</p>
+                <a
+                  id="ingredient"
+                  onClick={() => handleIngredient(recipe.strIngredient2)}
+                >
+                  {recipe.strIngredient2}{" "}
+                </a>
+                <p id="ingredient">{recipe.strMeasure2}</p>
+                <a
+                  id="ingredient"
+                  onClick={() => handleIngredient(recipe.strIngredient3)}
+                >
+                  {recipe.strIngredient3}{" "}
+                </a>
+                <p id="ingredient">{recipe.strMeasure3}</p>
+                <a
+                  id="ingredient"
+                  onClick={() => handleIngredient(recipe.strIngredient4)}
+                >
+                  {recipe.strIngredient4}{" "}
+                </a>
+                <p id="ingredient">{recipe.strMeasure4}</p>
+                <a
+                  id="ingredient"
+                  onClick={() => handleIngredient(recipe.strIngredient5)}
+                >
+                  {recipe.strIngredient5}{" "}
+                </a>
+                <p id="ingredient">{recipe.strMeasure5}</p>
+                <a
+                  id="ingredient"
+                  onClick={() => handleIngredient(recipe.strIngredient6)}
+                >
+                  {recipe.strIngredient6}{" "}
+                </a>
+                <p id="ingredient">{recipe.strMeasure6}</p>
+                <a
+                  id="ingredient"
+                  onClick={() => handleIngredient(recipe.strIngredient7)}
+                >
+                  {recipe.strIngredient7}{" "}
+                </a>
+                <p id="ingredient">{recipe.strMeasure7}</p>
+                <a
+                  id="ingredient"
+                  onClick={() => handleIngredient(recipe.strIngredient8)}
+                >
+                  {recipe.strIngredient8}{" "}
+                </a>
+                <p id="ingredient">{recipe.strMeasure8}</p>
+                <a
+                  id="ingredient"
+                  onClick={() => handleIngredient(recipe.strIngredient9)}
+                >
+                  {recipe.strIngredient9}{" "}
+                </a>
+                <p id="ingredient">{recipe.strMeasure9}</p>
+                <a
+                  id="ingredient"
+                  onClick={() => handleIngredient(recipe.strIngredient10)}
+                >
+                  {recipe.strIngredient10}{" "}
+                </a>
+                <p id="ingredient">{recipe.strMeasure10}</p>
+              </ul>
+            </div>
+          </div>
+          <div className="instructionSection">
+            <p id="instructions">{recipe?.strInstructions}</p>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
+    </div>
+  );
+};
 
-        </div>
-    )
-}
-
-export default savedRecipes;
+export default SavedRecipe;

@@ -23,31 +23,63 @@ const Navbar = () => {
       <div>
         {!loginCheck ? (
           <>
-            <button className="btn" type="button" style={{marginRight: '10px'}}>
-              <Link to="/signup">Signup</Link>
-            </button>
-            <button className="btn" type="button">
-              <Link to="/login">Login</Link>
-            </button>
-            <a className="nav-item">
-                <Link
-                  id="nav-item"
-                  to="/recipeFinder"
-                  className={currentPage === '/recipeFinder' ? 'active' : 'nav-link'}>
-                  Find Recipe
-                </Link>
-          </a>
+            <Link to="/signup" className="btn" style={{ marginRight: "10px" }}>
+              Signup
+            </Link>
+
+            <Link to="/login" className="btn" style={{ marginRight: "10px" }}>
+              Login
+            </Link>
+
+            
+            
           </>
         ) : (
-          <button
-            className="btn"
-            type="button"
-            onClick={() => {
-              auth.logout();
-            }}
-          >
-            Logout
-          </button>
+          <div>
+            {`Logged in as: ${auth.getProfile().username } `}
+            <button
+              className="btn"
+              type="button"
+              style={{ marginRight: "10px" }}
+              onClick={() => {
+                auth.logout();
+              }}
+            >
+              Logout
+            </button>
+
+            <Link
+              // className="btn"
+              style={{ marginRight: "10px" }}
+              id="nav-item"
+              to="/recipeFinder"
+              className={
+                currentPage === "/recipeFinder" ? "active" : "nav-link"
+              }
+            >
+              Find Recipe
+            </Link>
+
+            <Link
+              // className="btn"
+              style={{ marginRight: "10px" }}
+              id="nav-item"
+              to="/savedRecipe"
+              className={currentPage === "/savedRecipe" ? "active" : "nav-link"}
+            >
+              Saved Recipes
+            </Link>
+
+            <Link
+              // className="btn"
+              style={{ marginRight: "10px" }}
+              id="nav-item"
+              to="/Nutrients"
+              className={currentPage === "/Nutrients" ? "active" : "nav-link"}
+            >
+              Nutrition Facts
+            </Link>
+          </div>
         )}
       </div>
     </div>
