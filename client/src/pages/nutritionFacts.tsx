@@ -1,13 +1,13 @@
-import React from 'react';
-import SearchNutrition from '../api/nutritionApi';
-import NutrientFacts from '../interfaces/Nutrition';
-import { useState , useEffect} from 'react';
-
+import React from "react";
+import SearchNutrition from "../api/nutritionApi";
+import NutrientFacts from "../interfaces/Nutrition";
+import { useState, useEffect } from "react";
 
 const Nutrients = () => {
-
-  const [food, setFood] = useState<string>('');
-  const [nutritionFacts, setNutritionFacts] = useState<NutrientFacts | null>(null);
+  const [food, setFood] = useState<string>("");
+  const [nutritionFacts, setNutritionFacts] = useState<NutrientFacts[] | null>(
+    null
+  );
   useEffect(() => {
     console.log(nutritionFacts);
   }, [nutritionFacts]);
@@ -19,39 +19,36 @@ const Nutrients = () => {
   const handleFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     fetchFood(food);
-   
   };
 
   const fetchFood = async (props: string) => {
     try {
+      const data = await SearchNutrition(props);
+      console.log(data);
 
-      const data = await SearchNutrition(props)
-      console.log(data)
+      setNutritionFacts(data);
+    } catch (err) {
+      console.error("Could not fetch nutrient data", err);
+    }
+  };
 
-     setNutritionFacts(data);
-    
-   } catch (err) {
-    console.error('Could not fetch nutrient data', err);
-   }
-   };
-  
   return (
     <div>
       <div className="headContainer">
-      <h1> Nutritional Facts</h1>
-      <p>Nutrition Deets!</p>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          type="text"
-          placeholder="Search Food Item"
-          value={food}
-          onChange={handleInputChange}
-        />
-        <button type="submit">Search</button>
+        <h1> Nutritional Facts</h1>
+        <p>Nutrition Deets!</p>
+        <form onSubmit={handleFormSubmit}>
+          <input
+            type="text"
+            placeholder="Search Food Item"
+            value={food}
+            onChange={handleInputChange}
+          />
+          <button type="submit">Search</button>
         </form>
       </div>
-      
-      {nutritionFacts && nutritionFacts.length > 0? (
+
+      {nutritionFacts && nutritionFacts.length > 0 ? (
         <div>
           <h2 className="foodName">{food}</h2>
           <div className="cardContainer">
@@ -61,10 +58,12 @@ const Nutrients = () => {
               alt="cool nutritional picture"
             />
             <div className="listContainer">
-              <h3>Nutritional Facts</h3>
-              <ul id="nutritientList">
-                {nutritionFacts.map((nutrient) => (
-                  <li key={nutrient.nutrientId}>{nutrient.nutrientName}</li>
+            <h3>Nutritional Facts</h3>
+            <ul id="nutrientList">
+              {nutritionFacts.map((nutrient, index) => (
+                <li key={index}>
+                  {nutrient.nutrientName || "Nutrient Name Unavailable"}
+                </li>
                 ))}
               </ul>
             </div>
