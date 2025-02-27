@@ -26,6 +26,8 @@ const filteredFoods = chosenFood.foodNutrients.map((n: any) => {
   return {
     'nutrientId': n.nutrientId ,
     'nutrientName': n.nutrientName,
+    "value": n.value,
+      "unit": n.unitName,
     'derivationDescription': n.derivationDescription,
   };
 });

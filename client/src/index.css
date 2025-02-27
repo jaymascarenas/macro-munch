@@ -1796,4 +1796,16 @@ li{
 #login-carImg{
 height: 1400px;
 }
+.backgroundContainer {
+  background-image: url("../utils/IMG/Nutrition Picture.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 20px;
+  color: white;
+}
+#nutrient-Img{
+  background: rgba(255, 255, 255, 0.8);
+}
 /* MEDIA QUERIES */
