@@ -26,7 +26,7 @@ const Nutrients = () => {
       const data = await SearchNutrition(props);
       console.log(data);
 
-      setNutritionFacts([data]);
+      setNutritionFacts(data);
     } catch (err) {
       console.error("Could not fetch nutrient data", err);
     }
@@ -54,14 +54,16 @@ const Nutrients = () => {
           <div className="cardContainer">
             <img
               id="nutritionalPic"
-              src="./assets/nutritional-pic.webp"
+              src="./assets/Nutrition-Picture.webp"
               alt="cool nutritional picture"
             />
             <div className="listContainer">
-              <h3>Nutritional Facts</h3>
-              <ul id="nutritientList">
-                {nutritionFacts.map((nutrient) => (
-                  <li key={nutrient.nutrientId}>{nutrient.nutrientName}</li>
+            <h3>Nutritional Facts</h3>
+            <ul id="nutrientList">
+              {nutritionFacts.map((nutrient, index) => (
+                <li key={index}>
+                  {nutrient.nutrientName || "Nutrient Name Unavailable"}
+                </li>
                 ))}
               </ul>
             </div>
