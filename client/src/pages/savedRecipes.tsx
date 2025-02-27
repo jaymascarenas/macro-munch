@@ -16,6 +16,7 @@ const SavedRecipe = () => {
       const ViableRecipes = data.map((recipe: any) => {
         return {
           name: recipe.name,
+          id: recipe.recipe_id,
         };
        });
       console.log(ViableRecipes);
@@ -29,8 +30,14 @@ const SavedRecipe = () => {
       const viewRecipe = data.meals[0];
       console.log(viewRecipe);
       setRecipe(viewRecipe);
-
     })
+  }
+  const handleRecipeDelete = (id: number, recipe: string) => {
+    console.log(id);
+    const User = auth.getProfile();
+    if (User.id !== null && User.id !== undefined) {
+      savedRecipeAPI.deleteRecipe(id, recipe, User.id)
+    }
   }
   const GenerateSavedRecipes = () => {
     
@@ -39,45 +46,11 @@ const SavedRecipe = () => {
       return (
         <div>
           <a onClick={() => handleRecipeClick(recipe.name)}>{recipe.name}</a>
+          <button onClick={() => handleRecipeDelete(recipe.id, recipe.name)}> Remove </button>
         </div>
       );
     })}
     </>)
-    // fetch saved recipes from database
-    // return saved recipes
-    
-      /*      const handlesavedRecipeClick = (recipes: string) => {
-            RecipeCard(recipes).then((data) => {
-                const viewRecipe = data.meals[0];
-                console.log(viewRecipe);
-                setRecipe(viewRecipe);
-            })
-        }
-        const savedRecipes = localStorage.getItem("recipe");
-        const handleDeleteRecipe = (recipe: string) => {
-          const savedRecipes = localStorage.getItem("recipe");
-          if (savedRecipes) {
-            const viableRecipe = JSON.parse(savedRecipes);
-            const newRecipe = viableRecipe.filter(
-              (item: string) => item !== recipe
-            );
-              localStorage.setItem("recipe", JSON.stringify(newRecipe));
-              window.location.reload();
-          }
-            
-        };
-        if (savedRecipes) {
-            console.log(`${auth.getProfile().id}`);
-            const viableRecipe = JSON.parse(savedRecipes);
-            return viableRecipe.map((recipe: string) => {
-                return (
-                    <div>
-                        <a onClick={() => handlesavedRecipeClick(recipe)} id="recipeTag">{recipe}</a>
-                        <button onClick={() => handleDeleteRecipe(recipe)}> delete Me</button>
-                    </div>
-                ) 
-            })
-        }*/
     
   };
   const handleIngredient = (ingredient: string) => {
