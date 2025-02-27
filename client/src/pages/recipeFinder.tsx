@@ -58,7 +58,7 @@ const RecipeFinder = () => {
    if (recipe !== undefined) {
        const User = auth.getProfile();
      if (User.id !== null && User.id !== undefined) {
-       console.log(User);
+       
        console.log(recipe);
        const newRecipe = recipe.strMeal;
        console.log(newRecipe);
