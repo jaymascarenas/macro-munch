@@ -21,7 +21,7 @@ Below is a demonstration of what searching for a recipe would look like:
 ![Recipe Finder](./client/dist/assets/recipe.png)
 
 Below is a demontration of the nutritional facts that would display:
-![Nutritional Facts](./client/dist/assets/)
+![Nutritional Facts](./client/dist/assets/nutrient.png)
 
 ## Credits
 
