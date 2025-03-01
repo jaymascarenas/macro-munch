@@ -2,6 +2,7 @@ import React from "react";
 import SearchNutrition from "../api/nutritionApi";
 import NutrientFacts from "../interfaces/Nutrition";
 import { useState, useEffect } from "react";
+import NutritionImg from "../utils/IMG/Nutrition Picture.webp";
 
 const Nutrients = () => {
   const [food, setFood] = useState<string>("");
@@ -26,7 +27,7 @@ const Nutrients = () => {
       const data = await SearchNutrition(props);
       console.log(data);
 
-      setNutritionFacts([data]);
+      setNutritionFacts(data);
     } catch (err) {
       console.error("Could not fetch nutrient data", err);
     }
@@ -34,7 +35,7 @@ const Nutrients = () => {
 
   return (
     <div>
-      <div className="headContainer">
+      <div className="backgroundContainer">
         <h1> Nutritional Facts</h1>
         <p>Nutrition Deets!</p>
         <form onSubmit={handleFormSubmit}>
@@ -53,15 +54,17 @@ const Nutrients = () => {
           <h2 className="foodName">{food}</h2>
           <div className="cardContainer">
             <img
-              id="nutritionalPic"
-              src="./client/dist/assets/Nutrition-Picture.webp"
+              id="nutrient-Img"
+              src={NutritionImg}
               alt="cool nutritional picture"
             />
             <div className="listContainer">
-              <h3>Nutritional Facts</h3>
-              <ul id="nutritientList">
-                {nutritionFacts.map((nutrient) => (
-                  <li key={nutrient.nutrientId}>{nutrient.nutrientName}</li>
+            <h3>Nutritional Facts - Per Serving</h3>
+            <ul id="nutrientList">
+              {nutritionFacts.map((nutrient, index) => (
+                <li key={index}>
+                  {nutrient.nutrientName}: {nutrient.value} {nutrient.unit}
+                </li>
                 ))}
               </ul>
             </div>

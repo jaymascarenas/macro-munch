@@ -9,6 +9,7 @@ const Signup = () => {
     username: "",
     email: "",
     password: "",
+    
   });
 
   const handleChange = (

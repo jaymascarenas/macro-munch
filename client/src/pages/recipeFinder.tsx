@@ -56,17 +56,23 @@ const RecipeFinder = () => {
   }
  const handleRecipeSave = () => {
    if (recipe !== undefined) {
-     console.log(recipe);
-     const newRecipe = recipe.strMeal;
-     console.log(newRecipe);
-     savedRecipeAPI
-       .saveRecipe(auth.getProfile().id, newRecipe)
-       .then((data) => {
-         console.log("Recipe saved:", data);
-       })
-       .catch((err) => {
-         console.error(err);
-       });
+       const User = auth.getProfile();
+     if (User.id !== null && User.id !== undefined) {
+       
+       console.log(recipe);
+       const newRecipe = recipe.strMeal;
+       console.log(newRecipe);
+       savedRecipeAPI
+         .saveRecipe(User.id, newRecipe)
+         .then((data) => {
+           console.log("Recipe saved:", data);
+         })
+         .catch((err) => {
+           console.error(err);
+         });
+     } else {
+       console.log(User);
+     }
    }
    
  };
