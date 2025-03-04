@@ -1,7 +1,7 @@
 // Purpose: This file contains the savedRecipes component which displays the saved recipes of the user.
 
 import { useState, useEffect } from "react";
-import Recipe from "../interfaces/Recipe";
+import Recipe, {SavedRecipeCardProps} from "../interfaces/Recipe";
 import savedRecipeAPI from "../api/savedRecipeAPI";
 import RecipeCard from "../api/recipeApi";
 import auth from "../utils/auth";
@@ -10,7 +10,7 @@ import NutrientFacts from "../interfaces/Nutrition";
 
 const SavedRecipe = () => {
   const [recipe, setRecipe] = useState<Recipe>();
-  const [savedRecipes, setSavedRecipes] = useState<string[]>([]);
+  const [savedRecipes, setSavedRecipes] = useState<SavedRecipeCardProps[]>([]);
   const [nutritionFacts, setNutritionFacts] = useState<
     NutrientFacts[] | []
   >([]);
@@ -18,6 +18,7 @@ const SavedRecipe = () => {
     console.log();
     savedRecipeAPI.retrieveRecipe(auth.getProfile().id).then((data) => {
       console.log(data);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const ViableRecipes = data.map((recipe: any) => {
         return {
           name: recipe.name,
@@ -48,6 +49,7 @@ const SavedRecipe = () => {
   const GenerateSavedRecipes = () => {
     
     return (<>
+      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
       {savedRecipes.map((recipe: any) => {
       return (
         <div className="savedRecipes">
